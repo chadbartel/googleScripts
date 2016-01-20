@@ -2,14 +2,18 @@ function onEdit() {
   var ss = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var editedRow = ss.getActiveCell().getRowIndex();
   var editorEmail = Session.getActiveUser().getEmail();
-  if (checkRange(editedRow)) {
-    if (ss.getRange(editedRow, 11).getValue()) {
-      //do nothing
-    } else {
-      ss.getRange(editedRow, 11).setValue(editorEmail);
-    }
+  if (ss.getSheetName() == "History") {
+    // DO NOTHING
   } else {
-    ss.getRange(editedRow, 11).clear();
+    if (checkRange(editedRow)) {
+      if (ss.getRange(editedRow, 11).getValue()) {
+        //do nothing
+      } else {
+        ss.getRange(editedRow, 11).setValue(editorEmail);
+      }
+    } else {
+      ss.getRange(editedRow, 11).clear();
+    }
   }
 }
 
