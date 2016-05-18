@@ -1,0 +1,1 @@
+=IMPORTXML(CONCATENATE("http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=",A5),"//body//div[@class='pkgstep1']//a[@id='tt_spStatus']")
